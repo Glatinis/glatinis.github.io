@@ -1,0 +1,66 @@
+* {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3vw;
+}
+
+h3 {
+    font-size: 2.5vw;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 0 0.3vw black;
+    border-radius: 5%;
+    padding: 1vw;
+}
+
+hr {
+    color: black;
+    width: 50%
+}
+
+.meetingname {
+    display: inline-block;
+    font-size: 5vw;
+    
+}
+
+.section {
+    display: inline-block;
+    font-size: 1.8vw;
+    margin-left: 0.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bold {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+#title {
+    color: blueviolet;
+    font-size: 8vw;
+    font-weight: 500;
+}
+
+#meetingname {
+    color: blueviolet;
+    font-size: 6vw;
+    display: inline-flex;
+    margin-right: 0.5%;
+}
+
+#section {
+    font-size: 2vw;
+    font-family: 'Roboto',Arial, Helvetica, sans-serif;
+    display: inline-flex;
+}
