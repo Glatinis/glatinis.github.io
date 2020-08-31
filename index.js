@@ -61,6 +61,8 @@ for (i = 0; i < meetings.length; i++) {
     document.write("<hr>")
 }
 
+// this code is made by rayan, don't steal
+
 console.log(getParameterByName("name"))
 if (getParameterByName("name") != null) {
 
