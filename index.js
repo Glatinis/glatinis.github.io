@@ -117,7 +117,7 @@ new Meeting("Math", "8B", "9217817862", "eVZvcEZTMllYaVMwdFFxdXhwMTNydz09",
     new DT([0, 1, 3, 4], [17, 14, 16, 14], [40, 00, 50, 50]))
 
 new Meeting("English", "8B", "73947229941", "N0FPRWlOajJzem1PWVp4SjFuTUpaUT09",
-    new DT([0, 1, 2, 3, 4], [14, 14, 14, 14, 16], [50, 50, 50, 50, 00]))
+    new DT([0, 1, 2, 2, 3, 4], [14, 14, 14, 16, 14, 16], [50, 50, 50, 50, 50, 00]))
 
 new Meeting("Science", "8B\\9B", "9228364372", "ZDcxeThPWWVPMGdEOWJwV28ybnlyUT09",
     new DT([0, 1, 3, 4], [16, 17, 17, 17], [50, 40, 40, 40]))
