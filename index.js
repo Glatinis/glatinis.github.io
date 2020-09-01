@@ -45,7 +45,7 @@ function createMeetingPage(meeting) {
     document.write("<hr>")
 
     document.write("<h2>Code</h2>")
-    document.write(`<h2 class="bold" id="code">${meeting.code}</h2>`)
+    document.write(`<h2 class="bold" id="code">${formatCode(meeting.code)}</h2>`)
     document.write("<hr>")
 
     document.write("<h2>Password</h2>")
@@ -56,6 +56,7 @@ function createMeetingPage(meeting) {
     document.write("<hr>")
 
     document.write(`<h3 id="back"><a href="/">Go Back</a></h3>`)
+    document.write(`<hr>`)
 }
 
 function checkTime(i) {
@@ -110,6 +111,26 @@ function happensToday(meeting) {
     }
 
     return false;
+}
+
+function replaceAtIndex(value, index) {
+    return value.substring(0, index) + "-" + value.substring(index);
+}
+
+function formatCode(code) {
+    let final;
+
+    739-4722-9941
+    if (code.length === 10) {
+        final = replaceAtIndex(code, 3)
+        final = replaceAtIndex(final, 7)
+    }
+    else if (code.length == 11) {
+        final = replaceAtIndex(code, 3)
+        final = replaceAtIndex(final, 8)
+    }
+
+    return final;
 }
 
 let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
