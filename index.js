@@ -186,6 +186,3 @@ if (getParameterByName("name") != null) {
         
     }
 }
-
-let appCache = window.applicationCache;
-appCache.update()
