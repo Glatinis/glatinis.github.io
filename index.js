@@ -103,7 +103,7 @@ function happensToday(meeting) {
             return false;
         }
 
-        if (happenMin < today.getMinutes() && happenHour < today.getHours()) {
+        if (happenMin < today.getMinutes() && happenHour <= today.getHours()) {
             return false;
         }
 
@@ -120,7 +120,6 @@ function replaceAtIndex(value, index) {
 function formatCode(code) {
     let final;
 
-    739-4722-9941
     if (code.length === 10) {
         final = replaceAtIndex(code, 3)
         final = replaceAtIndex(final, 7)
@@ -188,4 +187,5 @@ if (getParameterByName("name") != null) {
     }
 }
 
-// Check in morning if website works
+let appCache = window.applicationCache;
+appCache.update()
