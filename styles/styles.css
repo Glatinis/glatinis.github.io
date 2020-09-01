@@ -31,6 +31,7 @@ hr {
 .meetingname {
     display: inline-block;
     font-size: 5vw;
+    margin-bottom: 0px;
     
 }
 
@@ -50,6 +51,7 @@ hr {
     color: blueviolet;
     font-size: 8vw;
     font-weight: 500;
+    margin: 0px;
 }
 
 #meetingname {

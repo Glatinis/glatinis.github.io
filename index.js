@@ -1,5 +1,5 @@
 class Meeting {
-    constructor(name, section, code, password) {
+    constructor(name, section, code, password, DT) {
         this.name = name;
         this.section = section;
         this.code = code;
@@ -10,16 +10,26 @@ class Meeting {
         else {
             this.link = `https://us04web.zoom.us/j/${this.code}?pwd=${this.password}`
         }
+        this.DT = DT
 
         meetings.push(this)
     }
 }
 
+class DT {
+    constructor(days, hour, minute) {
+        this.days = days
+        this.hour = hour
+        this.minute = minute
+    }
+}
+
+let today = new Date();
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
@@ -47,16 +57,91 @@ function createMeetingPage(meeting) {
     document.write(`<h3 id="back"><a href="/">Go Back</a></h3>`)
 }
 
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i
+    };
+
+    return i;
+}
+
+function startTime() {
+    today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+
+    let amOrPm = h >= 12 ? 'PM' : 'AM';
+    h12 = (h % 12) || 12;
+
+    m = checkTime(m);
+    s = checkTime(s);
+
+    document.getElementById('clock').innerHTML =
+        h12 + ":" + m + ":" + s + " " + amOrPm;
+    
+    let t = setTimeout(startTime, 500);
+}
+
+function happensToday(meeting) {
+    // checks if happens today
+    if (meeting.DT.days.includes(today.getDay())) {
+        console.log("happens today")
+        // get what time it happens
+        happenHour = meeting.DT.hour[meeting.DT.days.indexOf(today.getDay())]
+        happenMin = checkTime(meeting.DT.minute[meeting.DT.days.indexOf(today.getDay())])
+
+        console.log(happenHour)
+        console.log(today.getHours())
+        // check if it has happened
+        if (happenHour < today.getHours()) {
+            return false;
+        }
+
+        if (happenMin < today.getMinutes() && happenHour < today.getHours()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    return false;
+}
+
+let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
 let meetings = []
 
-let math8B = new Meeting("Math", "8B", "9217817862", "eVZvcEZTMllYaVMwdFFxdXhwMTNydz09")
-let english8B = new Meeting("English", "8B", "73947229941", "N0FPRWlOajJzem1PWVp4SjFuTUpaUT09")
-let science8B = new Meeting("Science", "8B\\9B", "9228364372", "ZDcxeThPWWVPMGdEOWJwV28ybnlyUT09")
 
+new Meeting("Math", "8B", "9217817862", "eVZvcEZTMllYaVMwdFFxdXhwMTNydz09",
+    new DT([0, 1, 3, 4], [17, 14, 16, 14], [40, 00, 50, 50]))
+
+new Meeting("English", "8B", "73947229941", "N0FPRWlOajJzem1PWVp4SjFuTUpaUT09",
+    new DT([0, 1, 2, 3, 4], [14, 14, 14, 14, 16], [50, 50, 50, 50, 00]))
+
+new Meeting("Science", "8B\\9B", "9228364372", "ZDcxeThPWWVPMGdEOWJwV28ybnlyUT09",
+    new DT([0, 1, 3, 4], [16, 17, 17, 17], [50, 40, 40, 40]))
+
+new Meeting("Islamic", "8B", "3103149924", "SWRSamhITTQzRzFwajdlRjlucXJBUT09",
+    new DT([2], [14], [00]))
+
+let time;
 
 for (i = 0; i < meetings.length; i++) {
     document.write(`<h2 class="meetingname"><a class="redir meetingname" href="?name=${meetings[i].name}${meetings[i].section}">${meetings[i].name}</a></h2>`)
     document.write(`<h3 class="section">${meetings[i].section}</h3>`)
+
+    if (happensToday(meetings[i])) {
+        hr = meetings[i].DT.hour[meetings[i].DT.days.indexOf(today.getDay())]
+        min = checkTime(meetings[i].DT.minute[meetings[i].DT.days.indexOf(today.getDay())])
+        amOrPm = hr >= 12 ? 'PM' : 'AM';
+
+        document.write(`<h2 class="happens">This class happens today at ${((hr % 12) || 12)}:${min} ${amOrPm}</h2>`)
+    }
+    else {
+        document.write(`<h2 class="happens">No ${meetings[i].name} today</h2>`)
+    }
+        
     document.write("<br>")
     document.write("<hr>")
 }
@@ -77,3 +162,5 @@ if (getParameterByName("name") != null) {
         
     }
 }
+
+// Check in morning if website works
