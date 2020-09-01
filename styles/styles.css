@@ -28,6 +28,13 @@ hr {
     width: 50%
 }
 
+.title {
+    color: blueviolet;
+    font-size: 7vw;
+    font-weight: 500;
+    margin: 0px;
+}
+
 .meetingname {
     display: inline-block;
     font-size: 5vw;
@@ -47,11 +54,8 @@ hr {
     font-weight: 600;
 }
 
-#title {
-    color: blueviolet;
-    font-size: 8vw;
-    font-weight: 500;
-    margin: 0px;
+#clock {
+    font-size: 4vw;
 }
 
 #meetingname {
