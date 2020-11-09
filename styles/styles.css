@@ -17,8 +17,8 @@ a {
 }
 
 a:hover {
-    transition: all 0.3s ease;
-    box-shadow: inset 0 0 0 0.3vw black;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 0 0 0.2vw black;
     border-radius: 5%;
     padding: 1vw;
 }
